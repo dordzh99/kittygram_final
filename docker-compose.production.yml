@@ -13,6 +13,8 @@ services:
   backend:
     image: dordzh99/kittygram_backend
     env_file: .env
+    needs:
+      - db
     volumes:
       - static_volume:/backend_static
   frontend:
@@ -24,6 +26,8 @@ services:
   gateway:
     image: dordzh99/kittygram_gateway
     env_file: .env
+    needs:
+      - backend
     volumes:
       - static_volume:/static/
     ports:
